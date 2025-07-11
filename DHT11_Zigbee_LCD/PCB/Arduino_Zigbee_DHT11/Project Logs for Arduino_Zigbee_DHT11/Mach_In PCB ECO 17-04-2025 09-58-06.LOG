@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=GND Pin=U1-4
+Added Pin To Net: NetName=RX_Zigbee_5V Pin=R1-2
+Added Pin To Net: NetName=GND Pin=U1-29

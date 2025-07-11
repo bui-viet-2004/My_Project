@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=+5 Pin=U3-1
+Removed Pin From Net: NetName=GND Pin=U3-2
+Removed Pin From Net: NetName=GND Pin=U3-3
+Removed Pin From Net: NetName=12V Pin=U3-4
+Removed Member From Class: ClassName=Nguyen_Ly Member=U3
+Added Component: Designator=U?(MODULE_LM2596)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.ti.com/lit/ds/symlink/lm2596.pdf"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=U?-1
+Added Pin To Net: NetName=+5 Pin=U?-2
+Added Pin To Net: NetName=12V Pin=U?-3
+Added Pin To Net: NetName=GND Pin=U?-4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? MODULE_LM2596

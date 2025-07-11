@@ -1,0 +1,51 @@
+Added Component: Designator=J?(FEMALE-2.54-4x2P)
+Add component (AddParameter): Name = "JLCPCB PN"; Value = "C2977588"; VariantName = "[No Variations]"
+Added Component: Designator=J?(JACK_P4)
+Added Component: Designator=J?(FEMALE-2.54-3P)
+Add component (AddParameter): Name = "JLCPCB PN"; Value = "C5116529"; VariantName = "[No Variations]"
+Added Component: Designator=U?(MODULE_LM2596)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.ti.com/lit/ds/symlink/lm2596.pdf"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3.3 Pin=U?-38
+Added Net: Name=+3.3
+Added Pin To Net: NetName=+5 Pin=J?-1
+Added Pin To Net: NetName=+5 Pin=J?-2
+Added Pin To Net: NetName=+5 Pin=J?-8
+Added Pin To Net: NetName=+5 Pin=U?-2
+Added Pin To Net: NetName=+5 Pin=U?-18
+Added Net: Name=+5
+Added Pin To Net: NetName=+12 Pin=J?-1
+Added Pin To Net: NetName=+12 Pin=U?-3
+Added Net: Name=+12
+Added Pin To Net: NetName=GND Pin=J?-2
+Added Pin To Net: NetName=GND Pin=J?-3
+Added Pin To Net: NetName=GND Pin=J?-3
+Added Pin To Net: NetName=GND Pin=J?-4
+Added Pin To Net: NetName=GND Pin=J?-5
+Added Pin To Net: NetName=GND Pin=U?-1
+Added Pin To Net: NetName=GND Pin=U?-4
+Added Pin To Net: NetName=GND Pin=U?-19
+Added Net: Name=GND
+Added Pin To Net: NetName=Role Pin=J?-1
+Added Pin To Net: NetName=Role Pin=U?-3
+Added Net: Name=Role
+Added Pin To Net: NetName=RX_Zigbee Pin=J?-3
+Added Pin To Net: NetName=RX_Zigbee Pin=J?-6
+Added Pin To Net: NetName=RX_Zigbee Pin=U?-6
+Added Net: Name=RX_Zigbee
+Added Pin To Net: NetName=SCL Pin=U?-14
+Added Net: Name=SCL
+Added Pin To Net: NetName=SDA Pin=U?-15
+Added Net: Name=SDA
+Added Pin To Net: NetName=TX_Zigbee Pin=J?-2
+Added Pin To Net: NetName=TX_Zigbee Pin=J?-7
+Added Pin To Net: NetName=TX_Zigbee Pin=U?-7
+Added Net: Name=TX_Zigbee
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? Zigbee_CC2530
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? JACK_P4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? Role
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? STM32
+Added Rule: Name=Schematic Supply Nets
+Added Rule: Name=Schematic Supply Nets_1
+Added Rule: Name=Schematic Supply Nets_2
+Added Rule: Name=Schematic Supply Nets_3

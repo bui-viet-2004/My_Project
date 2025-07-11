@@ -1,0 +1,565 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD25\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">17/04/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10:01:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc" class="file"><acronym title="D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc">D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">67</td></tr>
+</table>
+</td>
+</table><a name="IDKMSTUQ31DSHMLQNTOMHJBQQY5KYL105FNTVNBDKGPBYV1AD4K3FC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPHAAJLBYBTYYKVQDY1WGSHS0UW4W305Y3HSP0BU0XDCWT0TAPNG">Clearance Constraint (Gap=0.5mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDG40VBJBDFXLWFNHBZV1GK3RYGF4NFZNHJSR2YWOAGANQEFDBLH1N">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRLEIQRLBFEAOOAPHQSY0RACV4BF1CNY4EUT4CAFDGS2DTBNWN5PF">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDV4UDMXCLKTVEMZKKCDRI32L3OFDSAOM4BKHYYVKOXGB55V4RHWKE">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOACRN2GAJZ0ZOTQUSI4BANQDTL11LJKCXY43ZRHTKGH4M5KNKPCP">Width Constraint (Min=1.2mm) (Max=1.2mm) (Preferred=1.2mm) (InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIJ3G2MAF1GTYOAALUY1RVQ2KKGV0X1QN2C1012FTH5WG1HMD3ZOF">Width Constraint (Min=0.5mm) (Max=0.5mm) (Preferred=0.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWFKM2O5Y2EJLKKF3OZFF40KTGK2F1UNN4QKHGNJDUMAU1QHMPYMH">Width Constraint (Min=1mm) (Max=1mm) (Preferred=1mm) (InNet('12V'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2BMWE2DJLOS4F5ROUFRZ3I2HNFM4214USFVSEYOQU2JBU5LVEVZB">Width Constraint (Min=0.8mm) (Max=0.8mm) (Preferred=0.8mm) (InNet('+3.3'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDG4SIEOJBUUKD2HFTBZXCFXI2MJM5QFT00RTUFOK1HNMAJWAVO4J">Width Constraint (Min=0.8mm) (Max=0.8mm) (Preferred=0.8mm) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSRGLMUD2FXBQCPYFN4PLK5RSKN1V1KU02BCIPAHNQJFG1PGOAWVD">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPFNC3VVE1QGFNJC34N2XT12U2NHTD5L3YA2XIOLUK0HPKWBUZVQL">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBZSLP22UWCYBOU3CH3PNVU4H0G1WVH1K34NQVUPYMFBSYT5MF4IM">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKTXTRBK2GG0ENBWEOPDAWDS5NL02SGGCRORBEWLMNYWC2IEPVQ4I">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUHHMNAY3QFMSPII2N2PY41FSFAHVAPKUT1FYXDDHI0X2IMP3WJP">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDU1SL2BRE1YT3DDNP3N1X14WPYGNVOEDJS2W2VQEZBIKTO0534PNI">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">51</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWQPHCI5IMT25FGRKOY5ENYCDINVRRLY5TR2YUAMQAUAOBAAYZVRN">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">5</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1T4LI04WDVGCEX2UVW3G5FM2YEFVII32JCOZ3EFKAWVDG0J20HSI">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXKFDHXN0WLIIN211L1XDZTIJBITHIEPN3ZV3USKIP1DO04UMO54D">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">67</td>
+</tr>
+</table><br><a name="IDRLEIQRLBFEAOOAPHQSY0RACV4BF1CNY4EUT4CAFDGS2DTBNWN5PF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=999.094mil|Location2.X=3765mil|Location1.Y=4992.204mil|Location2.Y=5002.204mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=999.094mil|Location2.X=3765mil|Location1.Y=4992.204mil|Location2.Y=5002.204mil|Absolute=True">Un-Routed Net Constraint: Track (25.504mm,126.929mm)(95.504mm,126.929mm) on Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=999.094mil|Location2.X=1009.094mil|Location1.Y=2630mil|Location2.Y=5002.204mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=999.094mil|Location2.X=1009.094mil|Location1.Y=2630mil|Location2.Y=5002.204mil|Absolute=True">Un-Routed Net Constraint: Track (25.504mm,66.929mm)(25.504mm,126.929mm) on Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=999.094mil|Location2.X=3765mil|Location1.Y=2630mil|Location2.Y=2640mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=999.094mil|Location2.X=3765mil|Location1.Y=2630mil|Location2.Y=2640mil|Absolute=True">Un-Routed Net Constraint: Track (25.504mm,66.929mm)(95.504mm,66.929mm) on Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3755mil|Location2.X=3765mil|Location1.Y=2630mil|Location2.Y=5002.204mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3755mil|Location2.X=3765mil|Location1.Y=2630mil|Location2.Y=5002.204mil|Absolute=True">Un-Routed Net Constraint: Track (95.504mm,66.929mm)(95.504mm,126.929mm) on Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDDG4SIEOJBUUKD2HFTBZXCFXI2MJM5QFT00RTUFOK1HNMAJWAVO4J"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=0.8mm) (Max=0.8mm) (Preferred=0.8mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2375.547mil|Location2.X=2395.627mil|Location1.Y=4990.704mil|Location2.Y=5003.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2375.547mil|Location2.X=2395.627mil|Location1.Y=4990.704mil|Location2.Y=5003.704mil|Absolute=True">Width Constraint: Track (25.504mm,126.929mm)(95.504mm,126.929mm) on Bottom Layer Actual Width = 0.254mm, Target Width = 0.8mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=997.234mil|Location2.X=1010.814mil|Location1.Y=3809.602mil|Location2.Y=3824.202mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=997.234mil|Location2.X=1010.814mil|Location1.Y=3809.602mil|Location2.Y=3824.202mil|Absolute=True">Width Constraint: Track (25.504mm,66.929mm)(25.504mm,126.929mm) on Bottom Layer Actual Width = 0.254mm, Target Width = 0.8mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2375.547mil|Location2.X=2395.627mil|Location1.Y=2628.5mil|Location2.Y=2641.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2375.547mil|Location2.X=2395.627mil|Location1.Y=2628.5mil|Location2.Y=2641.5mil|Absolute=True">Width Constraint: Track (25.504mm,66.929mm)(95.504mm,66.929mm) on Bottom Layer Actual Width = 0.254mm, Target Width = 0.8mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.14mil|Location2.X=3766.72mil|Location1.Y=3809.602mil|Location2.Y=3824.202mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.14mil|Location2.X=3766.72mil|Location1.Y=3809.602mil|Location2.Y=3824.202mil|Absolute=True">Width Constraint: Track (95.504mm,66.929mm)(95.504mm,126.929mm) on Bottom Layer Actual Width = 0.254mm, Target Width = 0.8mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDBZSLP22UWCYBOU3CH3PNVU4H0G1WVH1K34NQVUPYMFBSYT5MF4IM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1671.54mil|Location2.X=1790.9mil|Location1.Y=2890.32mil|Location2.Y=3009.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1671.54mil|Location2.X=1790.9mil|Location1.Y=2890.32mil|Location2.Y=3009.68mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad J2-1(43.973mm,74.93mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1435.32mil|Location2.X=1554.68mil|Location1.Y=2890.32mil|Location2.Y=3009.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1435.32mil|Location2.X=1554.68mil|Location1.Y=2890.32mil|Location2.Y=3009.68mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad J2-2(37.973mm,74.93mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1541.62mil|Location2.X=1660.98mil|Location1.Y=2689.532mil|Location2.Y=2808.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1541.62mil|Location2.X=1660.98mil|Location1.Y=2689.532mil|Location2.Y=2808.892mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad J2-3(40.673mm,69.83mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDU1SL2BRE1YT3DDNP3N1X14WPYGNVOEDJS2W2VQEZBIKTO0534PNI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.325mil|Location2.X=3122.575mil|Location1.Y=4219.179mil|Location2.Y=4230.429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.325mil|Location2.X=3122.575mil|Location1.Y=4219.179mil|Location2.Y=4230.429mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Pad J1-1(80.264mm,107.31mm) on Multi-Layer And Track (78.951mm,106.06mm)(78.951mm,107.31mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.325mil|Location2.X=3122.575mil|Location1.Y=4219.179mil|Location2.Y=4230.429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.325mil|Location2.X=3122.575mil|Location1.Y=4219.179mil|Location2.Y=4230.429mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Pad J1-1(80.264mm,107.31mm) on Multi-Layer And Track (78.951mm,107.31mm)(78.951mm,109.81mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3154.375mil|Location2.X=3165.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3154.375mil|Location2.X=3165.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad J1-1(80.264mm,107.31mm) on Multi-Layer And Track (79.078mm,106.06mm)(89.111mm,106.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3254.375mil|Location2.X=3265.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3254.375mil|Location2.X=3265.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad J1-2(82.804mm,107.31mm) on Multi-Layer And Track (79.078mm,106.06mm)(89.111mm,106.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.375mil|Location2.X=3365.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.375mil|Location2.X=3365.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad J1-3(85.344mm,107.31mm) on Multi-Layer And Track (79.078mm,106.06mm)(89.111mm,106.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.375mil|Location2.X=3465.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.375mil|Location2.X=3465.625mil|Location1.Y=4177.379mil|Location2.Y=4188.629mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad J1-4(87.884mm,107.31mm) on Multi-Layer And Track (79.078mm,106.06mm)(89.111mm,106.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3495.713mil|Location2.X=3506.963mil|Location1.Y=4219.179mil|Location2.Y=4230.429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3495.713mil|Location2.X=3506.963mil|Location1.Y=4219.179mil|Location2.Y=4230.429mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Pad J1-4(87.884mm,107.31mm) on Multi-Layer And Track (89.111mm,106.06mm)(89.111mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.375mil|Location2.X=3465.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.375mil|Location2.X=3465.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.073mm &lt; 0.254mm) Between Pad J1-5(87.884mm,109.86mm) on Multi-Layer And Track (79.078mm,111.06mm)(89.111mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.073mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3495.713mil|Location2.X=3506.963mil|Location1.Y=4319.573mil|Location2.Y=4330.823mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3495.713mil|Location2.X=3506.963mil|Location1.Y=4319.573mil|Location2.Y=4330.823mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Pad J1-5(87.884mm,109.86mm) on Multi-Layer And Track (89.111mm,106.06mm)(89.111mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.375mil|Location2.X=3365.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.375mil|Location2.X=3365.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.073mm &lt; 0.254mm) Between Pad J1-6(85.344mm,109.86mm) on Multi-Layer And Track (79.078mm,111.06mm)(89.111mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.073mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3254.375mil|Location2.X=3265.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3254.375mil|Location2.X=3265.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.073mm &lt; 0.254mm) Between Pad J1-7(82.804mm,109.86mm) on Multi-Layer And Track (79.078mm,111.06mm)(89.111mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.073mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.348mil|Location2.X=3122.598mil|Location1.Y=4317.868mil|Location2.Y=4329.118mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.348mil|Location2.X=3122.598mil|Location1.Y=4317.868mil|Location2.Y=4329.118mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Pad J1-8(80.264mm,109.86mm) on Multi-Layer And Track (78.951mm,107.31mm)(78.951mm,109.81mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.325mil|Location2.X=3122.575mil|Location1.Y=4319.573mil|Location2.Y=4330.823mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.325mil|Location2.X=3122.575mil|Location1.Y=4319.573mil|Location2.Y=4330.823mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.186mm &lt; 0.254mm) Between Pad J1-8(80.264mm,109.86mm) on Multi-Layer And Track (78.951mm,109.81mm)(78.951mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.186mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3154.375mil|Location2.X=3165.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3154.375mil|Location2.X=3165.625mil|Location1.Y=4360.389mil|Location2.Y=4371.639mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.073mm &lt; 0.254mm) Between Pad J1-8(80.264mm,109.86mm) on Multi-Layer And Track (79.078mm,111.06mm)(89.111mm,111.06mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.073mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1518.839mil|Location2.X=1526.506mil|Location1.Y=2741.167mil|Location2.Y=2748.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1518.839mil|Location2.X=1526.506mil|Location1.Y=2741.167mil|Location2.Y=2748.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad J2-3(40.673mm,69.83mm) on Multi-Layer And Track (29.924mm,69.723mm)(44.529mm,69.723mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3444.617mil|Location2.X=3455.867mil|Location1.Y=3874.375mil|Location2.Y=3885.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3444.617mil|Location2.X=3455.867mil|Location1.Y=3874.375mil|Location2.Y=3885.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.241mm &lt; 0.254mm) Between Pad R1-1(88.646mm,98.552mm) on Multi-Layer And Track (86.538mm,98.552mm)(87.427mm,98.552mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3174.133mil|Location2.X=3185.383mil|Location1.Y=3874.375mil|Location2.Y=3885.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3174.133mil|Location2.X=3185.383mil|Location1.Y=3874.375mil|Location2.Y=3885.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.241mm &lt; 0.254mm) Between Pad R1-2(79.756mm,98.552mm) on Multi-Layer And Track (80.975mm,98.552mm)(81.839mm,98.552mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3179.133mil|Location2.X=3190.383mil|Location1.Y=3584.375mil|Location2.Y=3595.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3179.133mil|Location2.X=3190.383mil|Location1.Y=3584.375mil|Location2.Y=3595.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.241mm &lt; 0.254mm) Between Pad R2-1(79.883mm,91.186mm) on Multi-Layer And Track (81.102mm,91.186mm)(81.991mm,91.186mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.617mil|Location2.X=3460.867mil|Location1.Y=3584.375mil|Location2.Y=3595.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.617mil|Location2.X=3460.867mil|Location1.Y=3584.375mil|Location2.Y=3595.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.241mm &lt; 0.254mm) Between Pad R2-2(88.773mm,91.186mm) on Multi-Layer And Track (86.69mm,91.186mm)(87.554mm,91.186mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3179.133mil|Location2.X=3190.383mil|Location1.Y=3299.375mil|Location2.Y=3310.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3179.133mil|Location2.X=3190.383mil|Location1.Y=3299.375mil|Location2.Y=3310.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.241mm &lt; 0.254mm) Between Pad R3-1(79.883mm,83.947mm) on Multi-Layer And Track (81.102mm,83.947mm)(81.991mm,83.947mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.617mil|Location2.X=3460.867mil|Location1.Y=3299.375mil|Location2.Y=3310.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.617mil|Location2.X=3460.867mil|Location1.Y=3299.375mil|Location2.Y=3310.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.241mm &lt; 0.254mm) Between Pad R3-2(88.773mm,83.947mm) on Multi-Layer And Track (86.69mm,83.947mm)(87.554mm,83.947mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2793.365mil|Location2.X=2804.615mil|Location1.Y=4787.69mil|Location2.Y=4798.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2793.365mil|Location2.X=2804.615mil|Location1.Y=4787.69mil|Location2.Y=4798.94mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Pad U1-1(70.739mm,122.809mm) on Multi-Layer And Text "TX" (70.282mm,121.615mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1879.375mil|Location2.X=1890.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1879.375mil|Location2.X=1890.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-10(47.879mm,122.809mm) on Multi-Layer And Text "D7" (47.422mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1779.375mil|Location2.X=1790.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-11(45.339mm,122.809mm) on Multi-Layer And Text "D8" (44.882mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1679.375mil|Location2.X=1690.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1679.375mil|Location2.X=1690.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-12(42.799mm,122.809mm) on Multi-Layer And Text "D9" (42.342mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.375mil|Location2.X=1590.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.375mil|Location2.X=1590.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-13(40.259mm,122.809mm) on Multi-Layer And Text "D10" (39.802mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1479.375mil|Location2.X=1490.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1479.375mil|Location2.X=1490.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-14(37.719mm,122.809mm) on Multi-Layer And Text "D11" (37.262mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1379.375mil|Location2.X=1390.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1379.375mil|Location2.X=1390.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-15(35.179mm,122.809mm) on Multi-Layer And Text "D12" (34.722mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.375mil|Location2.X=2690.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.375mil|Location2.X=2690.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-2(68.199mm,122.809mm) on Multi-Layer And Text "RX" (67.615mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1882.095mil|Location2.X=1893.345mil|Location1.Y=4272.381mil|Location2.Y=4283.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1882.095mil|Location2.X=1893.345mil|Location1.Y=4272.381mil|Location2.Y=4283.631mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.188mm &lt; 0.254mm) Between Pad U1-21(47.879mm,107.569mm) on Multi-Layer And Text "A2" (47.422mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.188mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.095mil|Location2.X=1993.345mil|Location1.Y=4272.381mil|Location2.Y=4283.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.095mil|Location2.X=1993.345mil|Location1.Y=4272.381mil|Location2.Y=4283.631mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.188mm &lt; 0.254mm) Between Pad U1-22(50.419mm,107.569mm) on Multi-Layer And Text "A3" (49.962mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.188mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2081.972mil|Location2.X=2093.222mil|Location1.Y=4272.378mil|Location2.Y=4283.628mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2081.972mil|Location2.X=2093.222mil|Location1.Y=4272.378mil|Location2.Y=4283.628mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.188mm &lt; 0.254mm) Between Pad U1-23(52.959mm,107.569mm) on Multi-Layer And Text "A4" (52.629mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.188mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2177.572mil|Location2.X=2188.822mil|Location1.Y=4272.386mil|Location2.Y=4283.636mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2177.572mil|Location2.X=2188.822mil|Location1.Y=4272.386mil|Location2.Y=4283.636mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Pad U1-24(55.499mm,107.569mm) on Multi-Layer And Text "A5" (55.042mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2273.08mil|Location2.X=2284.33mil|Location1.Y=4272.212mil|Location2.Y=4283.462mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2273.08mil|Location2.X=2284.33mil|Location1.Y=4272.212mil|Location2.Y=4283.462mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.199mm &lt; 0.254mm) Between Pad U1-25(58.039mm,107.569mm) on Multi-Layer And Text "A6" (57.582mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.199mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2386.976mil|Location2.X=2398.226mil|Location1.Y=4272.113mil|Location2.Y=4283.363mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2386.976mil|Location2.X=2398.226mil|Location1.Y=4272.113mil|Location2.Y=4283.363mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.204mm &lt; 0.254mm) Between Pad U1-26(60.579mm,107.569mm) on Multi-Layer And Text "A7" (60.122mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.375mil|Location2.X=2490.625mil|Location1.Y=4272.411mil|Location2.Y=4283.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.375mil|Location2.X=2490.625mil|Location1.Y=4272.411mil|Location2.Y=4283.661mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.185mm &lt; 0.254mm) Between Pad U1-27(63.119mm,107.569mm) on Multi-Layer And Text "5V" (62.662mm,110.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.185mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.502mil|Location2.X=2608.795mil|Location1.Y=4270.158mil|Location2.Y=4281.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.502mil|Location2.X=2608.795mil|Location1.Y=4270.158mil|Location2.Y=4281.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.228mm &lt; 0.254mm) Between Pad U1-28(65.659mm,107.569mm) on Multi-Layer And Text "RST" (65.329mm,110.947mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.228mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.375mil|Location2.X=2590.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.375mil|Location2.X=2590.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-3(65.659mm,122.809mm) on Multi-Layer And Text "RST" (65.202mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.375mil|Location2.X=2490.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.375mil|Location2.X=2490.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-4(63.119mm,122.809mm) on Multi-Layer And Text "GND" (62.662mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2379.375mil|Location2.X=2390.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2379.375mil|Location2.X=2390.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-5(60.579mm,122.809mm) on Multi-Layer And Text "D2" (59.995mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2279.375mil|Location2.X=2290.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2279.375mil|Location2.X=2290.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-6(58.039mm,122.809mm) on Multi-Layer And Text "D3" (57.455mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2179.375mil|Location2.X=2190.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2179.375mil|Location2.X=2190.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-7(55.499mm,122.809mm) on Multi-Layer And Text "D4" (54.915mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2079.375mil|Location2.X=2090.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2079.375mil|Location2.X=2090.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-8(52.959mm,122.809mm) on Multi-Layer And Text "D5" (52.375mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1979.375mil|Location2.X=1990.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1979.375mil|Location2.X=1990.625mil|Location1.Y=4785.181mil|Location2.Y=4796.431mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.244mm &lt; 0.254mm) Between Pad U1-9(50.419mm,122.809mm) on Multi-Layer And Text "D6" (49.962mm,121.488mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2805.045mil|Location2.X=2816.295mil|Location1.Y=3230.272mil|Location2.Y=3241.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2805.045mil|Location2.X=2816.295mil|Location1.Y=3230.272mil|Location2.Y=3241.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.158mm &lt; 0.254mm) Between Pad U3-1(71.391mm,83.271mm) on Multi-Layer And Track (29.735mm,81.986mm)(72.881mm,81.986mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.158mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2765.675mil|Location2.X=2776.925mil|Location1.Y=4039.356mil|Location2.Y=4050.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2765.675mil|Location2.X=2776.925mil|Location1.Y=4039.356mil|Location2.Y=4050.606mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.143mm &lt; 0.254mm) Between Pad U3-2(71.391mm,101.671mm) on Multi-Layer And Track (29.735mm,102.941mm)(72.881mm,102.941mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.143mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.335mil|Location2.X=1185.585mil|Location1.Y=4039.356mil|Location2.Y=4050.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.335mil|Location2.X=1185.585mil|Location1.Y=4039.356mil|Location2.Y=4050.606mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.143mm &lt; 0.254mm) Between Pad U3-3(30.971mm,101.671mm) on Multi-Layer And Track (29.735mm,102.941mm)(72.881mm,102.941mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.143mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1172.19mil|Location2.X=1183.44mil|Location1.Y=3957.801mil|Location2.Y=3969.051mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1172.19mil|Location2.X=1183.44mil|Location1.Y=3957.801mil|Location2.Y=3969.051mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.109mm &lt; 0.254mm) Between Pad U3-3(30.971mm,101.671mm) on Multi-Layer And Track (29.735mm,81.986mm)(29.735mm,102.941mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.109mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.705mil|Location2.X=1224.955mil|Location1.Y=3228.273mil|Location2.Y=3239.523mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.705mil|Location2.X=1224.955mil|Location1.Y=3228.273mil|Location2.Y=3239.523mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.199mm &lt; 0.254mm) Between Pad U3-4(30.971mm,83.241mm) on Multi-Layer And Text "J2" (30.048mm,80.391mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.199mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1172.181mil|Location2.X=1183.431mil|Location1.Y=3271.579mil|Location2.Y=3282.829mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1172.181mil|Location2.X=1183.431mil|Location1.Y=3271.579mil|Location2.Y=3282.829mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.109mm &lt; 0.254mm) Between Pad U3-4(30.971mm,83.241mm) on Multi-Layer And Track (29.735mm,81.986mm)(29.735mm,102.941mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.109mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.705mil|Location2.X=1224.955mil|Location1.Y=3229.681mil|Location2.Y=3240.931mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.705mil|Location2.X=1224.955mil|Location1.Y=3229.681mil|Location2.Y=3240.931mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.128mm &lt; 0.254mm) Between Pad U3-4(30.971mm,83.241mm) on Multi-Layer And Track (29.735mm,81.986mm)(72.881mm,81.986mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.128mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDWQPHCI5IMT25FGRKOY5ENYCDINVRRLY5TR2YUAMQAUAOBAAYZVRN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1488.033mil|Location2.X=1499.283mil|Location1.Y=4372.875mil|Location2.Y=4384.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1488.033mil|Location2.X=1499.283mil|Location1.Y=4372.875mil|Location2.Y=4384.125mil|Absolute=True">Silk To Silk Clearance Constraint: (0.127mm &lt; 0.254mm) Between Text "3V3" (37.262mm,111.074mm) on Top Overlay And Track (29.616mm,111.379mm)(38.735mm,111.379mm) on Top Overlay Silk Text to Silk Clearance [0.127mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.375mil|Location2.X=1185.625mil|Location1.Y=3401.56mil|Location2.Y=3412.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.375mil|Location2.X=1185.625mil|Location1.Y=3401.56mil|Location2.Y=3412.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.22mm &lt; 0.254mm) Between Text "IN-" (30.209mm,85.019mm) on Top Overlay And Track (29.735mm,81.986mm)(29.735mm,102.941mm) on Top Overlay Silk Text to Silk Clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.375mil|Location2.X=1185.625mil|Location1.Y=3936.56mil|Location2.Y=3947.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.375mil|Location2.X=1185.625mil|Location1.Y=3936.56mil|Location2.Y=3947.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.22mm &lt; 0.254mm) Between Text "IN+" (30.209mm,98.608mm) on Top Overlay And Track (29.735mm,81.986mm)(29.735mm,102.941mm) on Top Overlay Silk Text to Silk Clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1219.154mil|Location2.X=1226.82mil|Location1.Y=3223.963mil|Location2.Y=3231.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1219.154mil|Location2.X=1226.82mil|Location1.Y=3223.963mil|Location2.Y=3231.629mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "J2" (30.048mm,80.391mm) on Top Overlay And Track (29.735mm,81.986mm)(72.881mm,81.986mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1510.87mil|Location2.X=1522.12mil|Location1.Y=4572.375mil|Location2.Y=4583.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\HocTap\HaIU\SS6\Ky_thuat_truyen_thong_ko_day\Zigbee\PCB\Arduino_Zigbee_DHT11\Mach_In.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1510.87mil|Location2.X=1522.12mil|Location1.Y=4572.375mil|Location2.Y=4583.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.229mm &lt; 0.254mm) Between Text "USB" (37.516mm,116.281mm) on Top Overlay And Track (38.735mm,111.379mm)(38.735mm,118.999mm) on Top Overlay Silk Text to Silk Clearance [0.229mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

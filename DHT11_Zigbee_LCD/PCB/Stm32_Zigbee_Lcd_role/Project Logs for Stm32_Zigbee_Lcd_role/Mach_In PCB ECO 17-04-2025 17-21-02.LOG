@@ -1,0 +1,40 @@
+Removed Pin From Net: NetName=Role Pin=J?-1
+Removed Pin From Net: NetName=+5 Pin=J?-2
+Removed Pin From Net: NetName=GND Pin=J?-3
+Added Component: Designator=D?(D1A)
+Add component (AddParameter): Name = "Value"; Value = "1N4007"; VariantName = "[No Variations]"
+Added Component: Designator=J?(BORNE-5.00-3P)
+Add component (AddParameter): Name = "JLCPCB PN"; Value = "C91154"; VariantName = "[No Variations]"
+Added Component: Designator=Q?(QTO-92)
+Add component (AddParameter): Name = "Value"; Value = "C9014"; VariantName = "[No Variations]"
+Added Component: Designator=R?(R1/4W)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=U?(RELE)
+Added Pin To Net: NetName=+5 Pin=D?-2
+Added Pin To Net: NetName=GND Pin=Q?-1
+Added Pin To Net: NetName=Role Pin=R?-1
+Added Pin To Net: NetName=+5 Pin=U?-1
+Added Pin To Net: NetName=COM Pin=J?-2
+Added Pin To Net: NetName=COM Pin=U?-3
+Added Net: Name=COM
+Added Pin To Net: NetName=NC Pin=J?-3
+Added Pin To Net: NetName=NC Pin=U?-4
+Added Net: Name=NC
+Added Pin To Net: NetName=NetQ?_2 Pin=Q?-2
+Added Pin To Net: NetName=NetQ?_2 Pin=R?-2
+Added Net: Name=NetQ?_2
+Added Pin To Net: NetName=NO Pin=J?-1
+Added Pin To Net: NetName=NO Pin=U?-5
+Added Net: Name=NO
+Added Pin To Net: NetName=S Pin=D?-1
+Added Pin To Net: NetName=S Pin=Q?-3
+Added Pin To Net: NetName=S Pin=U?-2
+Added Net: Name=S
+Added Member To Class: ClassName=Nguyen_Ly Member=Component D? 1N4007
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? Zigbee_CC2530
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? JACK_P4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? BORNE-5.00-3P
+Added Member To Class: ClassName=Nguyen_Ly Member=Component Q? C9014
+Added Member To Class: ClassName=Nguyen_Ly Member=Component R? 1k
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? RELE
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? STM32

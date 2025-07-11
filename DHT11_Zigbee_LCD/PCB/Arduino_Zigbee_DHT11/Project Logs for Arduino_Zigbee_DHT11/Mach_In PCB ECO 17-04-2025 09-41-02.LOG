@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=J1 Old Footprint=JST-2.00-4P New Footprint=FEMALE-2.54-4x2P
+Change Component Comment : Designator=J1 Old Comment=JST-2.00-4P New Comment=FEMALE-2.54-4x2P
+Change component parameters: Designator = "J1" ("J1"); Footprint = "JST-2.00-4P"; UniqueID = "\QLXTUCTE" ("\QLXTUCTE")
+Change component parameters (AddParameter): Name = "JLCPCB PN"; Value = "C2977588"; VariantName = "[No Variations]"

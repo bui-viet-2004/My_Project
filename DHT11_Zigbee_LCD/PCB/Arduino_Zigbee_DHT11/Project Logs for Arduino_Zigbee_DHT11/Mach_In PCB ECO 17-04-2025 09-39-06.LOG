@@ -1,0 +1,49 @@
+Added Component: Designator=J1(JST-2.00-4P)
+Add component (AddParameter): Name = "JLCPCB PN"; Value = "C5175232"; VariantName = "[No Variations]"
+Added Component: Designator=J2(JACK_P4)
+Added Component: Designator=U1(ARDUINO_NANO)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf"; VariantName = "[No Variations]"
+Added Component: Designator=U2(DHT11)
+Add component (AddParameter): Name = "Digikey PN"; Value = "1528-1228-ND"; VariantName = "[No Variations]"
+Added Component: Designator=U3(MODULE_LM2596)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.ti.com/lit/ds/symlink/lm2596.pdf"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3.3 Pin=U1-17
+Added Net: Name=+3.3
+Added Pin To Net: NetName=+5 Pin=J1-1
+Added Pin To Net: NetName=+5 Pin=U1-30
+Added Pin To Net: NetName=+5 Pin=U2-1
+Added Pin To Net: NetName=+5 Pin=U3-1
+Added Net: Name=+5
+Added Pin To Net: NetName=12V Pin=J2-1
+Added Pin To Net: NetName=12V Pin=U3-4
+Added Net: Name=12V
+Added Pin To Net: NetName=GND Pin=J1-4
+Added Pin To Net: NetName=GND Pin=J2-2
+Added Pin To Net: NetName=GND Pin=J2-3
+Added Pin To Net: NetName=GND Pin=U1-4
+Added Pin To Net: NetName=GND Pin=U2-3
+Added Pin To Net: NetName=GND Pin=U2-4
+Added Pin To Net: NetName=GND Pin=U3-2
+Added Pin To Net: NetName=GND Pin=U3-3
+Added Net: Name=GND
+Added Pin To Net: NetName=RX_Zigbee_3.3V Pin=J1-3
+Added Net: Name=RX_Zigbee_3.3V
+Added Pin To Net: NetName=RX_Zigbee_5V Pin=U1-5
+Added Net: Name=RX_Zigbee_5V
+Added Pin To Net: NetName=SIG_DHT11 Pin=U1-8
+Added Pin To Net: NetName=SIG_DHT11 Pin=U2-2
+Added Net: Name=SIG_DHT11
+Added Pin To Net: NetName=TX_Zigbee Pin=J1-2
+Added Pin To Net: NetName=TX_Zigbee Pin=U1-6
+Added Net: Name=TX_Zigbee
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J1 JST-2.00-4P
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J2 JACK_P4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U1 ARDUINO_NANO
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U2 DHT11
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U3 MODULE_LM2596
+Added Rule: Name=Schematic Supply Nets
+Added Rule: Name=Schematic Supply Nets_1
+Added Rule: Name=Schematic Supply Nets_2
+Added Rule: Name=Schematic Supply Nets_3

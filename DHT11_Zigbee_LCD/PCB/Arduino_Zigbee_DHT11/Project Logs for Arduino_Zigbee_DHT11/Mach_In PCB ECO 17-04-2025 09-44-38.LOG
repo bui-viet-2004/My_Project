@@ -1,0 +1,15 @@
+Added Component: Designator=R1(R1/4W)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R2(R1/4W)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R3(R1/4W)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=RX_Zigbee_3.3V Pin=R1-1
+Added Pin To Net: NetName=RX_Zigbee_3.3V Pin=R2-2
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=NetR2_1 Pin=R3-2
+Added Net: Name=NetR2_1
+Added Member To Class: ClassName=Nguyen_Ly Member=Component R1 1k
+Added Member To Class: ClassName=Nguyen_Ly Member=Component R2 1k
+Added Member To Class: ClassName=Nguyen_Ly Member=Component R3 1k

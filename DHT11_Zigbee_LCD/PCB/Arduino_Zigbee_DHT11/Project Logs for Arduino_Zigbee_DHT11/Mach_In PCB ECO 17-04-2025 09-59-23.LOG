@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=GND Pin=J1-5
+Added Pin To Net: NetName=RX_Zigbee_3.3V Pin=J1-6
+Added Pin To Net: NetName=TX_Zigbee Pin=J1-7
+Added Pin To Net: NetName=+5 Pin=J1-8

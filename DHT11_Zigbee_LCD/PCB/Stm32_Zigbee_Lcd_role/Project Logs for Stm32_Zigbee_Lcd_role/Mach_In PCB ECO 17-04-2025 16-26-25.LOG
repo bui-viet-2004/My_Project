@@ -1,0 +1,10 @@
+Added Component: Designator=J?(JST-2.00-4P)
+Add component (AddParameter): Name = "JLCPCB PN"; Value = "C5175232"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=J?-1
+Added Pin To Net: NetName=+5 Pin=J?-2
+Added Pin To Net: NetName=SDA Pin=J?-3
+Added Pin To Net: NetName=SCL Pin=J?-4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? JACK_P4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? LCD_I2C
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? Role
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? STM32

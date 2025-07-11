@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=NO Pin=J?-1
+Removed Pin From Net: NetName=NC Pin=J?-3
+Added Pin To Net: NetName=NC Pin=J?-1
+Added Pin To Net: NetName=NO Pin=J?-3
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? LCD_I2C
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? BORNE-5.00-3P
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? Zigbee_CC2530
+Added Member To Class: ClassName=Nguyen_Ly Member=Component J? JACK_P4
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? MODULE_LM2596
+Added Member To Class: ClassName=Nguyen_Ly Member=Component U? STM32
